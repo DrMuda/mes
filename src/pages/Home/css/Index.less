@@ -1,0 +1,289 @@
+@titleColor: #3c93d0;
+
+.home-page {
+	min-width: 880px;
+	padding: 15px;
+	color: #fff;
+	background-color: #030631;
+	.header-title {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		margin-bottom: 20px;
+		height: 72px;
+		text-align: center;
+		font-size: 30px;
+		letter-spacing: 0.2em;
+		background: url('../../../assets/home/header-bg.png') no-repeat center / 100% 100%;
+		h4 {
+			max-width: 760px;
+			min-width: 760px;
+			margin: 0 auto;
+			color: @titleColor;
+			font-weight: bold;
+		}
+	}
+
+	// 主区域
+	.home-main {
+		display: flex;
+		justify-content: space-between;
+		height: 760px;
+		.main-content {
+			height: 100%;
+		}
+		.center-main {
+			width: 44%;
+			margin: 0 25px;
+		}
+	}
+
+	// 左右两边区域
+	.left-main,
+	.right-main {
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		.chart-item-area {
+			margin-bottom: 40px;
+			&:not(:last-child) {
+				flex: 1;
+			}
+			&:last-child {
+				margin-bottom: 0;
+				height: 190px;
+			}
+		}
+	}
+
+	// 中间区域
+	.center-main {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		padding-top: 30px;
+		.chart-item-area {
+			&:first-child {
+				flex: 1;
+				margin-bottom: 40px;
+			}
+			&:last-child {
+				height: 300px;
+			}
+		}
+	}
+
+	// 设置小标题
+	.chart-item-area {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		padding: 30px 10px 10px;
+		border: 1px solid #0d1946;
+		background-color: #000638;
+		.sub-title {
+			position: absolute;
+			top: 0;
+			left: 50%;
+			padding: 6px 20px;
+			width: 136px;
+			font-size: 16px;
+			color: @titleColor;
+			font-weight: bold;
+			text-align: center;
+			transform: translate(-50%, -50%);
+			background: url('../../../assets/home/六边形.png') no-repeat center / 100%;
+		}
+		.detail-box {
+			display: flex;
+			justify-content: space-around;
+			align-items: center;
+			padding-bottom: 10px;
+			text-align: center;
+			& > div {
+				flex: 1;
+			}
+			.yield {
+				font-size: 28px;
+				font-weight: bold;
+			}
+		}
+		.chart-slot {
+			flex: 1;
+			// overflow-y: auto;
+			// background-color: rgba(255, 255, 255, 0.5);
+		}
+		.environment-map {
+			display: flex;
+			justify-content: space-between;
+			height: 100%;
+			.items {
+				position: relative;
+				flex: 1;
+				background-repeat: no-repeat;
+				background-position: center 10%;
+				background-size: 40%;
+				&:nth-child(even) {
+					margin: 0 15px;
+				}
+			}
+
+			.temperature {
+				background-image: url('../../../assets/home/温度.png');
+			}
+			.humidity {
+				background-image: url('../../../assets/home/湿度.png');
+			}
+			.difference {
+				background-image: url('../../../assets/home/压力.png');
+			}
+
+			.info-txt {
+				position: absolute;
+				bottom: 8%;
+				left: 0;
+				width: 100%;
+				text-align: center;
+				.tag {
+					font-size: 14px;
+				}
+				.val {
+					font-size: 22px;
+				}
+			}
+		}
+		.scroll-list-box {
+			position: relative;
+			height: 120px;
+			overflow: hidden;
+		}
+		.notice-list {
+			position: relative;
+			transition: all 100ms;
+			// overflow-y: auto;
+		}
+		.notice-item {
+			display: flex;
+			justify-content: space-between;
+			padding: 5px;
+			text-align: center;
+		}
+		.notice-head {
+			border-bottom: 1px solid #0e1a47;
+		}
+		.notice-body {
+			margin: 6px 0;
+			background-color: #0f1b48c4;
+		}
+		.date-time {
+			flex: 2;
+		}
+		.msg {
+			flex: 4;
+		}
+		.production-speed {
+			padding: 0 30px;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			height: 100%;
+			.order-detail-box {
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+				flex: 1;
+				margin-bottom: 20px;
+			}
+			.progress-box {
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+				flex: 1;
+			}
+			.small-title {
+				padding: 4px 0;
+				font-size: 18px;
+				letter-spacing: 0.2em;
+				font-weight: bold;
+				.start-time {
+					margin-left: 20px;
+					font-size: 12px;
+					color: #3077b2;
+					letter-spacing: 0;
+				}
+			}
+			.ring-progress-chart-box {
+				display: flex;
+				align-items: center;
+				justify-content: space-evenly;
+				flex-wrap: nowrap;
+				padding-top: 10px;
+			}
+			.completion-time {
+				margin-top: 10px;
+				font-size: 12px;
+				color: #3077b2;
+			}
+			.card-detail {
+				display: flex;
+				justify-content: space-evenly;
+				align-items: center;
+				height: 100%;
+				text-align: center;
+			}
+			.card-items {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				border-radius: 6px;
+				width: 120px;
+				height: 80px;
+				.count {
+					font-weight: bold;
+				}
+				.num {
+					margin-right: 4px;
+					font-size: 30px;
+				}
+				.unit {
+					font-size: 12px;
+				}
+				.desc {
+					font-size: 12px;
+				}
+			}
+		}
+		// -----------------------
+		.border-area {
+			position: absolute;
+			width: 12px;
+			height: 12px;
+			&.bdr-1 {
+				top: 0;
+				left: 0;
+				border-left: 1px solid @titleColor;
+				border-top: 1px solid @titleColor;
+			}
+			&.bdr-2 {
+				top: 0;
+				right: -1px;
+				border-right: 1px solid @titleColor;
+				border-top: 1px solid @titleColor;
+			}
+			&.bdr-3 {
+				bottom: 0;
+				left: 0;
+				border-bottom: 1px solid @titleColor;
+				border-left: 1px solid @titleColor;
+			}
+			&.bdr-4 {
+				bottom: 0;
+				right: -1px;
+				border-right: 1px solid @titleColor;
+				border-bottom: 1px solid @titleColor;
+			}
+		}
+	}
+}

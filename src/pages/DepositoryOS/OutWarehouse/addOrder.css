@@ -1,0 +1,29 @@
+#context{
+    padding: 10px;
+    margin: 0 auto;
+    border: 0px;
+    width: 90%;
+    border: black solid 1px;
+}
+.input{
+    width: 160px;
+}
+
+.tableheader{
+    border-top:1px solid #8e8e8e;
+    border-left:1px solid #8e8e8e;
+    border-right:1px solid #8e8e8e;
+    padding-left: 10px;
+    padding-right: 10px;
+    height:35px;
+    line-height: 35px;
+    font-size: 1.2rem;
+}
+.tableheader .choseCargo{
+    float: right;
+    height: 34px;
+    box-sizing: border-box;
+}
+.tablebody{
+    border:1px solid #8e8e8e;
+}

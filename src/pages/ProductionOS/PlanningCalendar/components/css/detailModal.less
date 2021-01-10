@@ -1,0 +1,25 @@
+.list-box {
+    padding-right: 20px;
+    max-height: 500px;
+	overflow-y: auto;
+	.order-item {
+		margin-bottom: 10px;
+		padding-bottom: 10px;
+		border-bottom: 1px solid #e4e4e4;
+
+		p {
+			padding: 6px 0;
+		}
+	}
+
+	.progress-box {
+		display: flex;
+        align-items: center;
+        height: 33px;
+        overflow: hidden;
+        white-space: pre;
+        &>span + div{
+            flex: 1;
+        }
+	}
+}

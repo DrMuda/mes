@@ -1,0 +1,51 @@
+.header-area {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 10px;
+	padding: 0 10px;
+	height: 110px;
+	overflow: hidden;
+	background-color: white;
+	.action-area {
+		flex: 1;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		border-bottom: 1px solid #f1f1f1;
+		height: 100%;
+	}
+	.switch-schedule {
+		flex: 1;
+		height: 100%;
+	}
+}
+
+.schedule-state-list {
+	display: flex;
+	align-items: center;
+	height: 100%;
+	.schedule-state-item {
+		margin-right: 20px;
+		font-size: 16px;
+		cursor: pointer;
+		&.action {
+			color: #1b92ff;
+		}
+	}
+}
+
+.modal-box {
+	.ant-modal-confirm-body > .anticon + .ant-modal-confirm-title + .ant-modal-confirm-content {
+		margin-left: 0;
+	}
+	.big-icon {
+		margin-bottom: 15px;
+		font-size: 50px;
+		&.wraning {
+			color: #faad14;
+		}
+		&.success {
+			color: #52c41a;
+		}
+	}
+}

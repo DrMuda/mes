@@ -1,0 +1,130 @@
+@import '~antd/es/style/themes/default.less';
+
+html,
+body,
+#root {
+	height: 100%;
+}
+
+.colorWeak {
+	filter: invert(80%);
+}
+
+.ant-layout {
+	min-height: 100vh;
+}
+
+canvas {
+	display: block;
+}
+
+body {
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+ul,
+ol,
+p {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+/* 滚动条样式开始 */
+
+::-webkit-scrollbar {
+	width: 6px;
+	background-color: #d8d8d8;
+}
+
+/* 滚动槽 */
+
+::-webkit-scrollbar-track {
+	border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: #bfc1c4;
+}
+
+/* 滚动条样式结束 */
+
+@media (max-width: @screen-xs) {
+	.ant-table {
+		width: 100%;
+		overflow-x: auto;
+		&-thead > tr,
+		&-tbody > tr {
+			> th,
+			> td {
+				white-space: pre;
+				> span {
+					display: block;
+				}
+			}
+		}
+	}
+}
+
+// 兼容IE11
+@media screen and(-ms-high-contrast: active), (-ms-high-contrast: none) {
+	body .ant-design-pro > .ant-layout {
+		min-height: 100vh;
+	}
+}
+
+// -----------------------------
+form .ant-row.ant-form-item {
+	flex-direction: unset;
+}
+
+.ant-form-vertical .ant-form-item-label {
+	width: 100px;
+}
+
+// 清除设备详情页  -->  编辑  -->  设备产能单位下拉列表有外边距
+.capacity .ant-row.ant-form-item {
+	margin: 0;
+}
+
+//选项卡的一整条下划线
+.tabs_underline {
+	.ant-tabs-top > .ant-tabs-nav:before {
+		position: absolute;
+		right: 0;
+		left: 0;
+		z-index: 10;
+		border-bottom: 2px solid #00000047;
+		content: '';
+	}
+}
+//选项卡字体大小
+.tabs_font-size {
+	.ant-tabs-tab {
+		font-size: 17px;
+	}
+}
+
+.header-area {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 10px;
+	padding: 0 10px;
+	height: 84px;
+	overflow: hidden;
+	background-color: white;
+	.action-area {
+		flex: 1;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		border-bottom: 1px solid #f1f1f1;
+		height: 100%;
+	}
+	.switch-schedule {
+		flex: 1;
+		height: 100%;
+	}
+}
