@@ -39,8 +39,8 @@ class WorkingProcedure extends Component {
     columns = [
         {
             title: "工序编码",
-            dataIndex: "id",
-            editable: false,
+            dataIndex: "code",
+            valueType: 'text',
             formItemProps: {
                 rules: [
                     {
@@ -119,8 +119,7 @@ class WorkingProcedure extends Component {
                         <Button type="primary"
                             onClick={() => {
                                 const row = {
-                                    id: new Date().getTime(),
-                                    name: ''
+                                    id: new Date().getTime()
                                 }
                                 this.tableRef?.current?.addEditRecord?.(row)
                                 window.scrollTo(0, document.body.scrollHeight);
@@ -142,13 +141,12 @@ class WorkingProcedure extends Component {
                     }}
                     recordCreatorProps={false}
                     editable={{
-                        onChange: (editKeys, row) => {
+                        onChange: (editKeys) => {
                             this.setState({
                                 editKeys
                             })
                         },
                         onSave: (newWorkingProcedure) => {
-                            console.log(newWorkingProcedure);
                             this.save(newWorkingProcedure)
                         },
                         actionRender: (_, config) => {

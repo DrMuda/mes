@@ -8,14 +8,14 @@ import SelectCargo from '@/pages/DepositoryOS/EntryWarehouse/OtherEntry/componen
 
 
 const { Component } = React
-const namespace = "configOS_produceConfig_materialBOM"
+const namespace = "configOS_produceConfig_craftBOM"
 
 const mapStateToProps = (state) => {
     const { material_list } = state["ProductData_material_list"]
-    const { materialBOM } = state[namespace]
+    const { craftBOM } = state[namespace]
     return {
         material_list,
-        materialBOM
+        craftBOM
     }
 }
 const mapDispatchToProps = (dispatch) => {
@@ -25,20 +25,20 @@ const mapDispatchToProps = (dispatch) => {
                 type: `ProductData_material_list/getMaterialList`,
             })
         },
-        getMaterialBOM: () => {
+        getCraftBOM: () => {
             dispatch({
-                type: `${namespace}/getMaterialBOM`
+                type: `${namespace}/getCraftBOM`
             })
         },
-        delMaterialBOM: (idList) => {
+        delCraftBOM: (idList) => {
             dispatch({
-                type: `${namespace}/delMaterialBOM`,
+                type: `${namespace}/delCraftBOM`,
                 data: { idList }
             })
         },
-        editMaterialBOM: (newConfig) => {
+        editCraftBOM: (newConfig) => {
             dispatch({
-                type: `${namespace}/editMaterialBOM`,
+                type: `${namespace}/editCraftBOM`,
                 data: { newConfig }
             })
         }
@@ -61,7 +61,7 @@ const columns = [
                 <Button type="link"
                 style={{padding:0}}
                     onClick={() => {
-                        history.push(`/ConfigOS/ProduceConfig/ShowSubMaterial?id=${record.id}`);
+                        history.push(`/ConfigOS/ProduceConfig/ShowCraftBOM?id=${record.id}`);
                     }}>{text}</Button>
             )
         }
@@ -87,17 +87,17 @@ const columns = [
         dataIndex: "unit"
     },
     {
-        title: "操作",
+        title: "工序",
         dataIndex: "operation",
         width: 80,
         render: (_, record) =>
             <Button
                 type="primary"
                 onClick={() => {
-                    history.push(`/ConfigOS/ProduceConfig/EditSubMaterial?id=${record.id}`);
+                    history.push(`/ConfigOS/ProduceConfig/EditCraftBOM?id=${record.id}`);
                 }}
             >
-                管理BOM
+                修改
         </Button>
     }
 ]
@@ -160,7 +160,7 @@ const modalTableCol = [
     }
 ]
 
-class MaterialBOM extends Component {
+class CraftBOM extends Component {
 
     constructor(props) {
         super(props);
@@ -182,7 +182,7 @@ class MaterialBOM extends Component {
         }
 
         props.getMaterialList()
-        props.getMaterialBOM()
+        props.getCraftBOM()
     }
 
     onSearch(filterKeys) {
@@ -194,8 +194,8 @@ class MaterialBOM extends Component {
                     ...filterKeys
                 }
             }, () => {
-                const { material_list, materialBOM } = this.props
-                this.updataTableData(material_list, materialBOM)
+                const { material_list, craftBOM } = this.props
+                this.updataTableData(material_list, craftBOM)
             })
         }
     }
@@ -207,7 +207,7 @@ class MaterialBOM extends Component {
     }
 
     del() {
-        this.props.delMaterialBOM(this.state.selectedRowKeys)
+        this.props.delCraftBOM(this.state.selectedRowKeys)
     }
 
     add() {
@@ -219,17 +219,17 @@ class MaterialBOM extends Component {
     async onOk(selectedRows) {
         const row = selectedRows[0]
         const id = new Date().getTime()
-        await this.props.editMaterialBOM({
+        await this.props.editCraftBOM({
+            id,
             materialId: row.id,
             used_num: null,
-            children: [],
-            id,
+            children: []
         })
 
         this.setState({
             modalIsShow: false
         }, () => {
-            history.push(`/ConfigOS/ProduceConfig/EditSubMaterial?id=${id}&isNewMaterial=${true}`)
+            history.push(`/ConfigOS/ProduceConfig/EditCraftBOM?id=${id}`)
         })
     }
 
@@ -239,14 +239,14 @@ class MaterialBOM extends Component {
         })
     }
 
-    updataTableData(material_list, materialBOM) {
+    updataTableData(material_list, craftBOM) {
         let dataSource = []
-        if (material_list?.length > 0 && materialBOM?.children?.length > 0) {
-            materialBOM?.children?.map((child) => {
+        if (material_list?.length > 0 && craftBOM?.length > 0) {
+            craftBOM?.map((child) => {
                 const index = material_list.findIndex((material) => {
                     return `${material.id}` === `${child.materialId}`
                 })
-                if (index !== -1 && material_list[index].material_finishedproduct_type === "成品") {
+                if (index !== -1 && material_list[index].material_finishedproduct_type === "物料") {
                     dataSource.push({
                         ...material_list[index],
                         id: child.id,
@@ -272,9 +272,9 @@ class MaterialBOM extends Component {
     }
 
     UNSAFE_componentWillReceiveProps(props) {
-        const { material_list, materialBOM } = props
+        const { material_list, craftBOM } = props
         if (props !== this.props) {
-            this.updataTableData(material_list, materialBOM);
+            this.updataTableData(material_list, craftBOM);
         }
     }
 
@@ -298,7 +298,7 @@ class MaterialBOM extends Component {
                 <SelectCargo visible={this.state.modalIsShow}
                     columns={modalTableCol}
                     dataSource={material_list?.filter?.((material) => {
-                        return material.material_finishedproduct_type === "成品"
+                        return material.material_finishedproduct_type === "物料"
                     })}
                     onOk={this.onOk}
                     onCancel={this.onCancel}
@@ -308,4 +308,4 @@ class MaterialBOM extends Component {
         )
     }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(MaterialBOM)
+export default connect(mapStateToProps, mapDispatchToProps)(CraftBOM)

@@ -1,5 +1,4 @@
 import React from 'react'
-import { Card, Button, Popconfirm, Row, Col } from 'antd'
 import { connect } from 'dva'
 import { history } from 'umi'
 import MaterialDetail from './components/MaterialDetail'
@@ -10,7 +9,6 @@ const namespace = "configOS_produceConfig_materialBOM"
 const mapStateToProps = (state) => {
     const { material_list } = state["ProductData_material_list"]
     const { materialBOM } = state[namespace]
-    console.log(materialBOM)
     return {
         material_list,
         materialBOM
@@ -82,8 +80,10 @@ class EditSubMaterial extends Component {
     }
 
     render() {
+        let { isNewMaterial } = history.location.query
         return (
             <MaterialDetail
+                isNewMaterial={isNewMaterial? true : false}
                 material_list={this.props.material_list}
                 edit={true}
                 dataSource={this.state.dataSource}

@@ -315,3 +315,30 @@ export async function editMaterialBOM(params) {
 		data: params
 	})
 }
+
+// ---------------------------------------------------
+// 生产配置/工艺BOM配置
+
+// 获取工艺BOM列表
+export async function queryCraftBOM(params = {}) {
+	return request('/api/config/craftBOM', {
+		method: 'GET',
+		data: params
+	})
+}
+
+// 删除工艺BOM
+export async function delCraftBOM(params) {
+	return request('/api/config/craftBOM/del', {
+		method: 'POST',
+		data: params
+	})
+}
+
+// 增加或编辑工艺BOM
+export async function editCraftBOM(params) {
+	return request('/api/config/craftBOM/edit', {
+		method: 'POST',
+		data: params
+	})
+}

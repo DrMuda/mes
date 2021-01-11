@@ -1,22 +1,27 @@
 let workingProcedureList = [
     {
         id: "1",
+        code:"shumian",
         name: "梳棉"
     },
     {
         id: "2",
+        code:"bingtiao",
         name: "并条"
     },
     {
         id: "3",
+        code:"cusha",
         name: "粗纱"
     },
     {
         id: "4",
+        code:"xisha",
         name: "细纱"
     },
     {
         id: "5",
+        code:"luotong",
         name: "络筒"
     }
 ]
@@ -33,7 +38,6 @@ export default {
     // 删除某条工序
     'post /api/config/workingProcedure/del': (req, res) => {
         const { id } = req.body
-        console.log(id)
         workingProcedureList = workingProcedureList.filter((workingProcedure) => {
             return workingProcedure.id !== id
         })
@@ -58,7 +62,6 @@ export default {
             } else {
                 workingProcedureList.push({
                     ...newWorkingProcedure,
-                    id:new Date().getTime()
                 })
             }
             res.send({

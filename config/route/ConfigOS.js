@@ -135,6 +135,23 @@ const routes = [
                 path:'/ConfigOS/ProduceConfig/ShowSubMaterial',
                 component:'./ConfigOS/ProduceConfig/ShowSubMaterial',
                 hideInMenu: true
+            },
+            {
+                name:'工艺BOM配置',
+                path:'/ConfigOS/ProduceConfig/CraftBOM',
+                component:'./ConfigOS/ProduceConfig/CraftBOM'
+            },
+            {
+                name:'修改工艺BOM',
+                path:'/ConfigOS/ProduceConfig/EditCraftBOM',
+                component:'./ConfigOS/ProduceConfig/EditCraftBOM',
+                hideInMenu: true
+            },
+            {
+                name:'工艺BOM详情',
+                path:'/ConfigOS/ProduceConfig/ShowCraftBOM',
+                component:'./ConfigOS/ProduceConfig/ShowCraftBOM',
+                hideInMenu: true
             }
         ]
     }

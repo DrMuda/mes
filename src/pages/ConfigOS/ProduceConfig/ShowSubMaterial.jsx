@@ -1,5 +1,4 @@
 import React from 'react'
-import { Card, Button, Popconfirm, Row, Col } from 'antd'
 import { connect } from 'dva'
 import { history } from 'umi'
 import MaterialDetail from './components/MaterialDetail'
@@ -57,12 +56,9 @@ class ShowSubMaterial extends Component {
     updataTableData(tempMaterialBOM) {
         let { id } = history.location.query
         id = id ? id : "1"
-        console.log(id);
         const materialBOM = tempMaterialBOM?.children?.filter((child) => {
-            console.log(`${child.id}`,`${id}`)
             return `${child.id}` === `${id}`
         })
-        console.log(materialBOM);
         if(materialBOM?.length>0){
             this.setState({
                 dataSource: materialBOM[0]

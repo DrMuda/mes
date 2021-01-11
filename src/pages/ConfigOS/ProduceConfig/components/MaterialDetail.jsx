@@ -1,5 +1,5 @@
 import React from 'react'
-import { Table, Input, Button, Form, Row, Col } from 'antd'
+import { Table, Input, Button, Form, Row, Col, message } from 'antd'
 import { history } from 'umi'
 import SelectCargo from '@/pages/DepositoryOS/EntryWarehouse/OtherEntry/component/SelectCargo'
 const { Component } = React
@@ -223,7 +223,8 @@ class MaterialDetail extends Component {
             title: "用量",
             dataIndex: "used_num",
             render: (text, record, index) => {
-                if (index === 0) {
+                console.log(this.props.isNewMaterial)
+                if (index === 0 && !this.props.isNewMaterial) {
                     return <span>{text}</span>
                 }
                 return <Form.Item
@@ -236,7 +237,6 @@ class MaterialDetail extends Component {
                     <Input style={{ width: 100 }}
                         autoFocus={text === undefined ? true : false}
                         onChange={(e)=>{
-                            console.log(this.state)
                             const index=this.state.changeInfo.findIndex((info)=>{
                                 return info.id === record.id
                             })
@@ -272,9 +272,15 @@ class MaterialDetail extends Component {
                 <Col>
                     <Button style={{ margin: "8px" }}
                         htmlType="submit"
-                        onClick={() => {
-                            this.onSave()
-                            history.push('/ConfigOS/ProduceConfig/MaterialBOM')
+                        onClick={async () => {
+                            this.formRef.current.validateFields().then(async (_)=>{
+                                if(edit){
+                                    await this.onSave()
+                                }
+                                history.push('/ConfigOS/ProduceConfig/MaterialBOM')
+                            },(__)=>{
+                                message.error(`未填写完整`);
+                            })
                         }}>
                         确定
                     </Button>

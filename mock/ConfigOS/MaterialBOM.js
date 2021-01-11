@@ -90,6 +90,7 @@ export default {
     'post /api/config/materialBOM/edit':(req,res)=>{
         try{
             const { newConfig } = req.body
+            console.log(newConfig)
             let { id } = newConfig
             id = `${id}`.split("-")
             let parent = defaultConfig
@@ -113,6 +114,7 @@ export default {
                         }
                     }
                 } else {
+                    console.log(id[level])
                     addConfig(parent, {
                         ...newConfig,
                         id: id[level]
